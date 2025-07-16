@@ -1,11 +1,8 @@
-# ---------- Dockerfile ----------
 FROM python:3.11-slim
 WORKDIR /app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["bash", "start.sh"]
 
@@ -13,7 +10,7 @@ CMD ["bash", "start.sh"]
 #!/bin/bash
 chmod +x start.sh
 echo "Starting FastAPI on port $PORT"
-gunicorn app.main:app \
+gunicorn main:app \
     --workers 2 \
     --worker-class uvicorn.workers.UvicornWorker \
     --bind 0.0.0.0:${PORT:-8000}

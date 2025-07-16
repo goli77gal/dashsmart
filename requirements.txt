@@ -1,6 +1,7 @@
 # ---------- requirements.txt ----------
 fastapi
 uvicorn[standard]
+gunicorn
 python-dotenv
 sqlalchemy
 psycopg2-binary
